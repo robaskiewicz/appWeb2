@@ -50,6 +50,8 @@ public class PopulacaoInicialDB implements CommandLineRunner{
 		pessoaRepo.save(c3);
 		pessoaRepo.save(c4);
 		
+		
+		
 //		//Produtos
 //		
 //		Produto p1 = new Produto("Bicicleta");

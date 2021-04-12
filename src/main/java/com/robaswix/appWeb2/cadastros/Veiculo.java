@@ -12,11 +12,22 @@ public class Veiculo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String nome;
+	private String tipo;
 	private String modelo;
-	private String ano;
+	private Integer ano;
 	private String marca;
 	private String placa;
+	
+	
+	
+	
+	@Deprecated
+	protected Veiculo() {
+		
+	}
+	public Veiculo(String tipo) {
+		this.tipo = tipo;
+	}
 	
 	public Long getId() {
 		return id;
@@ -24,11 +35,12 @@ public class Veiculo {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+	
+	public String getTipo() {
+		return tipo;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	public String getModelo() {
 		return modelo;
@@ -36,10 +48,11 @@ public class Veiculo {
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
-	public String getAno() {
+	
+	public Integer getAno() {
 		return ano;
 	}
-	public void setAno(String ano) {
+	public void setAno(Integer ano) {
 		this.ano = ano;
 	}
 	public String getMarca() {
@@ -56,7 +69,7 @@ public class Veiculo {
 	}
 	@Override
 	public String toString() {
-		return "Veiculo [nome=" + nome + "]";
+		return "Veiculo [tipo=" + tipo + "]";
 	}
 	@Override
 	public int hashCode() {
