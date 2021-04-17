@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Sistema de Gestão de Pessoas</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+	
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
+  
+  
+  
+</head>
+<body>
+	<header th:insert="fragments/menu.html :: header"> </header>
+	<div class="container my-2">
+		<h1>Sistema de Gestão de Pessoas</h1>
+		<hr>
+		<h2>Editar Pessoa</h2>
+		<form action="#" th:action="@{/cadastros/locacoes/salvar}" th:object="${locacao}" method="POST">
+			<input type="hidden" id="id" th:field="*{id}">
+			
+			
+			<div class="form-group  col-md-12">
+				<label for="dataRetirada" class="col-form-label">Data Locação</label> 
+					<input type="date" th:field="*{dataRetirada}" class="form-control col-4" id="dataRetirada" > 
+					<span th:if="${#fields.hasErrors('dataRetirada')}" th:errors="*{dataRetirada}"
+						class="text-danger"></span>
+			</div>
+			
+			<div class="form-group  col-md-12">
+				<label for="dataDevolucao" class="col-form-label">Data Devolução</label> 
+					<input type="date" th:field="*{dataDevolucao}" class="form-control col-4" id="dataDevolucao" > 
+					<span th:if="${#fields.hasErrors('dataDevolucao')}" th:errors="*{dataDevolucao}"
+						class="text-danger"></span>
+			</div>
+
+			<div class="form-group col-md-12">
+				<label for="cliente" class="col-form-label">Pessoa</label>
+					<select th:field="*{pessoa}" class="form-control mb-4 col-4">
+						<option th:each="pessoa: ${pessoas}" th:value="${pessoa.id}" th:text="${pessoa.nome}"></option>
+					</select> 
+			</div>
+			
+			
+			<button type="submit" class="btn btn-info col-2">Salvar</button>
+		</form>
+		<hr>
+		<a th:href="@{/cadastros/locacoes}">Retornar para a lista de Locações</a>
+	</div>
+</body>
+</html>
