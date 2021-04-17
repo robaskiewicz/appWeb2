@@ -1,6 +1,7 @@
 package com.robaswix.appWeb2;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.transaction.Transactional;
 
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import com.robaswix.appWeb2.cadastros.Locacao;
+import com.robaswix.appWeb2.cadastros.LocacaoRepositorio;
 import com.robaswix.appWeb2.cadastros.Pessoa;
 import com.robaswix.appWeb2.cadastros.PessoaRepositorio;
 
@@ -17,6 +20,8 @@ public class PopulacaoInicialDB implements CommandLineRunner{
 	
 	@Autowired
 	private PessoaRepositorio pessoaRepo;
+	@Autowired
+	private LocacaoRepositorio locacaoRepo;
 //	@Autowired
 //	private ProdutoRepositorio produtoRepo;
 //	@Autowired
@@ -50,6 +55,7 @@ public class PopulacaoInicialDB implements CommandLineRunner{
 		pessoaRepo.save(c3);
 		pessoaRepo.save(c4);
 		
+
 		
 		
 //		//Produtos
@@ -108,7 +114,16 @@ public class PopulacaoInicialDB implements CommandLineRunner{
 //		pdi4.setValor(p5.getValor()*pdi4.getQtd());
 //		pedidoItemRepo.save(pdi4);
 		
+
+		Locacao locacao = new Locacao();
+		locacao.setDataRetirada(new Date());
+		locacao.setDataDevolucao(new Date());
+		locacao.setPessoa(c1);
+
 		
+		locacaoRepo.save(locacao);
+
+
 	
 	}
 
