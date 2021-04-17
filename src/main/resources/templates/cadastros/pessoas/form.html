@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
-<title>Sistema de Gestão de Pessoas</title>
+<title>Sistema de Locação de Veículos</title>
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -23,8 +23,6 @@
 <body>
 	<header th:insert="fragments/menu.html :: header"> </header>
 	<div class="container my-2">
-		<h1>Sistema de Gestão de Pessoas</h1>
-		<hr>
 		<h2>Editar Pessoa</h2>
 		<form action="#" th:action="@{/cadastros/pessoas/salvar}" th:object="${pessoa}" method="POST">
 			<input type="hidden" id="id" th:field="*{id}">
@@ -34,8 +32,45 @@
       		
       		<input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
       		<input type="text" th:field="*{telefone}" placeholder="Telefone" class="form-control mb-4 col-4">
+			<input type="text" th:field="*{endereco}" placeholder="Endereco" class="form-control mb-4 col-8">
+			
+			<div class="table-responsive">
+
+							<h4>Locações</h4>
+							<table class="table table-hover">
+								<thead class="table-primary">
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Data Retirada</th>
+										<th scope="col">Data Devolução</th>
+										<th scope="col">Veículo</th>
+																
+									</tr >
+								</thead>
+								<tbody>
+									<tr th:each="item,itemStat : *{locacoes}">
+										<th scope="row" th:text="${itemStat.count}">
+										<input
+											type="hidden"
+											th:field="*{locacoes[__${itemStat.index}__].id}" />
+										</th>
+										<td> <input type="text"
+											th:field="*{locacoes[__${itemStat.index}__].dataRetirada}"  />
+										</td>
+										<td><input type="text"
+											th:field="*{locacoes[__${itemStat.index}__].dataDevolucao}" />
+										</td>
+										<td><input type="text"
+											th:field="*{locacoes[__${itemStat.index}__].pessoa.nome}" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 			
 			<button type="submit" class="btn btn-info col-2">Salvar</button>
+			<br>			
+			
 		</form>
 		<hr>
 		<a th:href="@{/cadastros/pessoas}">Retornar para a lista de pessoas</a>

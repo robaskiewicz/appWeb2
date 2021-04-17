@@ -23,8 +23,10 @@ public class Locacao {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dataRetirada;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dataDevolucao;
 	
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)

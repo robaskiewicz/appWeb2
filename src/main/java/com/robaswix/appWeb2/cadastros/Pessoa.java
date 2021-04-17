@@ -1,12 +1,17 @@
 package com.robaswix.appWeb2.cadastros;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Pessoa {
@@ -14,11 +19,40 @@ public class Pessoa {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotNull
 	private String nome;
 
-	//@Email
+	@Email
 	private String email;
 	
+	private String endereco;
+	
+	@OneToMany(
+			cascade= CascadeType.ALL,
+			orphanRemoval = true,
+			mappedBy = "pessoa"
+			)
+	private List<Locacao> locacoes = new ArrayList<>();
+	
+
+	public List<Locacao> getLocacoes() {
+		return locacoes;
+	}
+
+	public void setLocacoes(List<Locacao> locacoes) {
+		this.locacoes = locacoes;
+	}
+
+	public String getEndereco() {
+		return endereco;
+		
+	}
+	
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+
 	private String telefone;
 	@Deprecated
 	protected Pessoa() {
