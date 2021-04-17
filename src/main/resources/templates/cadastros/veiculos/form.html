@@ -41,6 +41,43 @@
 			<input type="text" th:field="*{tipo}" placeholder="Tipo ex: Passeio, Utilitario" class="form-control mb-4 col-4">
    
       		<input type="number"  th:field="*{ano}" placeholder="Ano" class="form-control mb-4 col-4">
+      		
+      		
+      		
+      		<div class="table-responsive">
+
+							<h4>Locações</h4>
+							<table class="table table-hover">
+								<thead class="table-primary">
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Data Retirada</th>
+										<th scope="col">Data Devolução</th>
+										<th scope="col">Pessoa</th>
+																
+									</tr >
+								</thead>
+								<tbody>
+									<tr th:each="item,itemStat : *{locacoes}">
+										<th scope="row" th:text="${itemStat.count}">
+										<input
+											type="hidden"
+											th:field="*{locacoes[__${itemStat.index}__].id}" />
+										</th>
+										<td> <input type="text"
+											th:field="*{locacoes[__${itemStat.index}__].dataRetirada}"  />
+										</td>
+										<td><input type="text"
+											th:field="*{locacoes[__${itemStat.index}__].dataDevolucao}" />
+										</td>
+										<td><input type="text"
+											th:field="*{locacoes[__${itemStat.index}__].pessoa.nome}" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+      		
 			
 			<button type="submit" class="btn btn-info col-2">Salvar</button>
 		</form>
