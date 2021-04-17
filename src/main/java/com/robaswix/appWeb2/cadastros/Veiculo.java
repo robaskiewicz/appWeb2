@@ -6,6 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+
+
 
 @Entity
 public class Veiculo {
@@ -13,10 +19,22 @@ public class Veiculo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String tipo;
+	
+	@NotBlank(message = "Favor inserir Modelo")
 	private String modelo;
+	
+	@NotNull(message = "Favor inserir Ano")
 	private Integer ano;
+	
+	
 	private String marca;
+
+	@NotBlank(message = "Favor inserir Placa")
 	private String placa;
+	
+	@ManyToOne
+	private Locacao locacao;
+	
 	
 	
 	
@@ -27,6 +45,14 @@ public class Veiculo {
 	}
 	public Veiculo(String tipo) {
 		this.tipo = tipo;
+	}
+	
+
+	public Locacao getLocacao() {
+		return locacao;
+	}
+	public void setLocacao(Locacao locacao) {
+		this.locacao = locacao;
 	}
 	
 	public Long getId() {

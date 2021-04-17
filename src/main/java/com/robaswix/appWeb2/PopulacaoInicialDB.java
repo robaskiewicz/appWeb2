@@ -13,6 +13,8 @@ import com.robaswix.appWeb2.cadastros.Locacao;
 import com.robaswix.appWeb2.cadastros.LocacaoRepositorio;
 import com.robaswix.appWeb2.cadastros.Pessoa;
 import com.robaswix.appWeb2.cadastros.PessoaRepositorio;
+import com.robaswix.appWeb2.cadastros.Veiculo;
+import com.robaswix.appWeb2.cadastros.VeiculoRepositorio;
 
 //@Transactional
 @Component
@@ -22,6 +24,9 @@ public class PopulacaoInicialDB implements CommandLineRunner{
 	private PessoaRepositorio pessoaRepo;
 	@Autowired
 	private LocacaoRepositorio locacaoRepo;
+	
+	@Autowired
+	private VeiculoRepositorio veiculoRepo;
 //	@Autowired
 //	private ProdutoRepositorio produtoRepo;
 //	@Autowired
@@ -54,8 +59,35 @@ public class PopulacaoInicialDB implements CommandLineRunner{
 		pessoaRepo.save(c2);
 		pessoaRepo.save(c3);
 		pessoaRepo.save(c4);
+	
 		
-
+		//modelo
+		//marca
+		//tipo
+		//ano
+// Veiculos
+		
+		Veiculo v1 = new Veiculo("Palio");
+		v1.setModelo("Palio");
+	    v1.setMarca("Fiat");
+		v1.setTipo("Passeio");
+		v1.setAno(2021);
+		v1.setPlaca("CBA-2021");
+		
+		
+		
+		Veiculo v2 = new Veiculo("Gol");
+		v2.setModelo("Gol");
+	    v2.setMarca("VW");
+		v2.setTipo("Passeio");
+		v2.setAno(2021);
+		v2.setPlaca("ABC-2021");
+		
+		veiculoRepo.save(v1);
+		veiculoRepo.save(v2);
+		
+		
+	
 		
 		
 //		//Produtos
@@ -119,7 +151,7 @@ public class PopulacaoInicialDB implements CommandLineRunner{
 		locacao.setDataRetirada(new Date());
 		locacao.setDataDevolucao(new Date());
 		locacao.setPessoa(c1);
-
+		locacao.setVeiculo(v1);
 		
 		locacaoRepo.save(locacao);
 

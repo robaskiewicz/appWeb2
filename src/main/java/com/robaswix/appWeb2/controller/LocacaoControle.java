@@ -14,6 +14,7 @@ import com.robaswix.appWeb2.cadastros.Locacao;
 import com.robaswix.appWeb2.cadastros.LocacaoRepositorio;
 import com.robaswix.appWeb2.cadastros.Pessoa;
 import com.robaswix.appWeb2.cadastros.PessoaRepositorio;
+import com.robaswix.appWeb2.cadastros.VeiculoRepositorio;
 
 
 
@@ -22,11 +23,13 @@ public class LocacaoControle {
 	
 	private PessoaRepositorio pessoaRepo;
 	private LocacaoRepositorio locacaoRepo;
+	private VeiculoRepositorio veiculoRepo;
 //	private VeiculoRepositorio veiculoRepo;
 	
-	public LocacaoControle(PessoaRepositorio pessoaRepo, LocacaoRepositorio locacaoRepo) {
+	public LocacaoControle(PessoaRepositorio pessoaRepo, LocacaoRepositorio locacaoRepo, VeiculoRepositorio veiculoRepo) {
 		this.pessoaRepo = pessoaRepo;
 		this.locacaoRepo = locacaoRepo;
+		this.veiculoRepo = veiculoRepo;
 	
 	}
 	
@@ -42,6 +45,7 @@ public class LocacaoControle {
 		model.addAttribute("locacao", new Locacao());
 		
 		model.addAttribute("pessoas", pessoaRepo.findAll());
+		model.addAttribute("veiculos", veiculoRepo.findAll());
 //		model.addAttribute("veiculos", pessoaRepo.findAll());
 		
 		return "cadastros/locacoes/form";
@@ -56,6 +60,7 @@ public class LocacaoControle {
 		}
 		
 		model.addAttribute("pessoas", pessoaRepo.findAll());
+		model.addAttribute("veiculos", veiculoRepo.findAll());
 //		model.addAttribute("veiculos", pessoaRepo.findAll());
 		
 		model.addAttribute("locacao", locacaoOpt.get());

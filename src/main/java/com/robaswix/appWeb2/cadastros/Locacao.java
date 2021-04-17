@@ -33,6 +33,10 @@ public class Locacao {
 	@NotNull(message="Selecione uma pessoa")
 	private Pessoa pessoa;
 
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	
+	private Veiculo veiculo;
+	
 	
 	@Deprecated
 	public Locacao() {
@@ -70,5 +74,16 @@ public class Locacao {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
+
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
+	
+	
+	
 	
 }
