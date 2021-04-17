@@ -20,6 +20,8 @@
 					<th>Data Retirada</th>
 					<th>Data Devolução</th>
 					<th>Pessoa</th>
+					<th>Modelo</th>
+					<th>Placa</th>
 					<th>Ações</th>
 				</tr>
 			</thead>
@@ -28,6 +30,8 @@
 					<td th:text="${locacao.dataRetirada}"></td>
 					<td th:text="${locacao.dataDevolucao}"></td>
 					<td th:text="${locacao.pessoa.nome}"></td>
+					<td th:text="${locacao.veiculo.modelo}"></td>
+					<td th:text="${locacao.veiculo.placa}"></td>
 					<td>
 						<a th:href="@{/cadastros/locacoes/{id}(id=${locacao.id})}" class="btn btn-primary">Alterar</a>
 						<a th:href="@{/cadastros/locacoes/excluir/{id}(id=${locacao.id})}" class="btn btn-danger">Excluir</a>			
