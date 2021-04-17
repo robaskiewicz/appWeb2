@@ -2,6 +2,8 @@ package com.robaswix.appWeb2.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -69,7 +71,7 @@ public class LocacaoControle {
 	}
 
 	@PostMapping("/cadastros/locacoes/salvar")
-	public String salvarLocacao(@ModelAttribute("locacao") Locacao locacao, BindingResult bindingResult, Model model) {
+	public String salvarLocacao(@Valid @ModelAttribute("locacao") Locacao locacao, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			return "cadastros/locacoes/form";
 		}

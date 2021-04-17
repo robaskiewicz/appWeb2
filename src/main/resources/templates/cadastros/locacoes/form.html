@@ -47,12 +47,17 @@
 
 			<div class="form-group col-md-12">
 				<label for="cliente" class="col-form-label">Pessoa</label>
+				<span th:if="${#fields.hasErrors('pessoa')}" th:errors="*{pessoa}"
+						class="text-danger"></span>
 					<select th:field="*{pessoa}" class="form-control mb-4 col-4">
 						<option th:each="pessoa: ${pessoas}" th:value="${pessoa.id}" th:text="${pessoa.nome}"></option>
+												
 					</select> 
 			</div>
 			<div class="form-group col-md-12">
 				<label for="veiculo" class="col-form-label">Veiculo</label>
+				<span th:if="${#fields.hasErrors('veiculo')}" th:errors="*{veiculo}"
+						class="text-danger"></span>
 					<select th:field="*{veiculo}" class="form-control mb-4 col-4">
 						<option th:each="veiculo: ${veiculos}" th:value="${veiculo.id}" th:text="${veiculo.modelo}"></option>
 					</select> 

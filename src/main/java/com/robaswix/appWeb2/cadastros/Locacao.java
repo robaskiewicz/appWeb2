@@ -24,17 +24,19 @@ public class Locacao {
 	private Long id;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotNull
 	private Date dataRetirada;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotNull
 	private Date dataDevolucao;
 	
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)
-	@NotNull(message="Selecione uma pessoa")
+	@NotNull(message="Selecione uma Pessoa")
 	private Pessoa pessoa;
 
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)
-	
+	@NotNull(message="Selecione um Veiculo")
 	private Veiculo veiculo;
 	
 	
