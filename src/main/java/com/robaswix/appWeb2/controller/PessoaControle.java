@@ -2,6 +2,8 @@ package com.robaswix.appWeb2.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.robaswix.appWeb2.cadastros.Pessoa;
 import com.robaswix.appWeb2.cadastros.PessoaRepositorio;
+import com.robaswix.appWeb2.cadastros.Veiculo;
 
 
 
@@ -52,10 +55,11 @@ public class PessoaControle {
 	}
 
 	@PostMapping("/cadastros/pessoas/salvar")
-	public String salvarPessoa(@ModelAttribute("pessoa") Pessoa pessoa, BindingResult bindingResult, Model model) {
+	public String salvarPessoa(@Valid @ModelAttribute("pessoa") Pessoa pessoa, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			return "cadastros/pessoas/form";
 		}
+
 		
 		pessoaRepo.save(pessoa);
 		return "redirect:/cadastros/pessoas";

@@ -1,0 +1,28 @@
+
+Sistema de Locação de Veiculos
+
+Estrutura do Repositório
+Package 
+	appWeb2 - Contem o Application e o População do DB
+	appWeb2.cadastros - Contem as Classes Pessoa, Veiculo e Locação com respectivos Repositorios
+	appWeb2.controller - Contem os Controllers Pessoa, Veiculo, Locação
+	appWeb2.seguranca - Classe de controle de segurança
+	scr/main/templates - forms da aplicação  
+
+Requisitos da atividade
+Contem os cadastros de Cliente, Veículo e Locação
+Validações nos campos 
+	-Cliente(Nome, email)
+	-Veiculo(Modelo, Ano, Placa)
+	-Locação(DataRetirada, Data Devolução, Pessoa, Veiculo)
+Relações:
+	 Cliente -> Locação (OneToMany)
+	 Veiculo -> Locação (OneToMany)
+	 Locação -> Veiculo (ManyToOne)
+	 Locação -> Cliente (ManyToOne) 
+	 
+Controle de Acesso - usuario:pos senha:pos 
+Persistência: H2
+Renderização: Thymeleaf
+
+Alunos: Crystian Yamakawa, Lucas Marmo, Michel Robaskiewicz
